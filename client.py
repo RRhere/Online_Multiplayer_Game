@@ -69,13 +69,13 @@ def redrawWindow(win,game,p):
             else:
                 text1=font.render("Waiting...",1,(0,0,0))
                 
-            if p==1:
-                win.blit(text2, (100,350))
-                win.blit(text1, (400,350))
+        if p==1:
+            win.blit(text2, (100,350))
+            win.blit(text1, (400,350))
                 
-            else:
-                win.blit(text1, (100,350))
-                win.blit(text2, (100,350))
+        else:
+            win.blit(text1, (100,350))
+            win.blit(text2, (100,350))
                 
         for btn in btns:
             btn.draw(win)
@@ -102,7 +102,7 @@ def main():
             break
         
         if game.bothWent():
-            redrawWindow()
+            redrawWindow(win, game, player)
             pygame.time.delay(500)
             try:
                 game=n.send("reset")
@@ -139,6 +139,6 @@ def main():
                             if not game.p2Went:
                                 n.send(btn.text)
                                 
-    redrawWindow(win, game, p)
+    redrawWindow(win, game, player)
         
 main()

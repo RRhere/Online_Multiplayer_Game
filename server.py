@@ -6,15 +6,16 @@ import pickle
 from game import Game
 
 server = "192.168.1.13"
-port = 139
+port = 49153
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
 try:
     s.bind((server,port))
 except socket.error as e:
-    str(e)
+    print(str(e))
+    sys.exit()
     
-s.listen()
+s.listen(9)
 print("Waiting for a connection, Server started")
 
 connected=set()
@@ -36,7 +37,7 @@ def threaded_client(conn,p,gameId):
                     break
                 else:
                     if data=="reset":
-                        game.reset()                
+                        game.resetWent()                
                     elif data!="get":
                         game.play(p,data)
                         
