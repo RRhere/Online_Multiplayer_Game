@@ -138,6 +138,7 @@ def main():
                                 n.send(btn.text)
                                 
         redrawWindow(win, game, player)
+       
         
 def menu_screen():
     run=True
