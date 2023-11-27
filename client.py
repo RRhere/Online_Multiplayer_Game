@@ -138,8 +138,7 @@ def main():
                                 n.send(btn.text)
                                 
         redrawWindow(win, game, player)
-       
-        
+               
 def menu_screen():
     run=True
     clock=pygame.time.Clock()
@@ -158,7 +157,7 @@ def menu_screen():
                 run=False
             if event.type==pygame.MOUSEBUTTONDOWN:
                 run=False       
-    main()
+    main()   
 
 while True:
     menu_screen()
