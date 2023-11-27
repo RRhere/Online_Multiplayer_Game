@@ -65,9 +65,9 @@ def redrawWindow(win,game,p):
             if game.p2Went and p==1:
                 text2=font.render(move2,1,(0,0,0))
             elif game.p2Went:
-                text1=font.render("Locked In",1,(0,0,0))
+                text2=font.render("Locked In",1,(0,0,0))
             else:
-                text1=font.render("Waiting...",1,(0,0,0))
+                text2=font.render("Waiting...",1,(0,0,0))
                 
         if p==1:
             win.blit(text2, (100,350))
@@ -139,6 +139,6 @@ def main():
                             if not game.p2Went:
                                 n.send(btn.text)
                                 
-    redrawWindow(win, game, player)
+        redrawWindow(win, game, player)
         
 main()
