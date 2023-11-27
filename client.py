@@ -21,8 +21,8 @@ class Button:
     def draw(self, win):
         pygame.draw.rect(win, self.color, (self.x, self.y, self.width, self.height))
         font=pygame.font.SysFont("comicsans", 40)
-        text=font.render(self.team, 1, (255,255,255))
-        win.blit(text, (self.x+round(self.width/2)-round(text.get_width()/2)), (self.y+round(self.height/2)-round(text.get_height()/2)))
+        text=font.render(self.text, 1, (255,255,255))
+        win.blit(text, (self.x+round(self.width/2)-round(text.get_width()/2), self.y+round(self.height/2)-round(text.get_height()/2)))
         
     def click(self, pos):
         x1=pos[0]
@@ -30,9 +30,7 @@ class Button:
         if self.x<=x1<=self.x+self.width and self.y<=y1<=self.y+self.height:
             return True
         else:
-            return False
-    
-    
+            return False    
 
 def redrawWindow(win,game,p):
     win.fill((128,128,128))
@@ -42,7 +40,7 @@ def redrawWindow(win,game,p):
         text=font.render("Waiting for Player...", 1, (255,0,0), True)
         win.blit(text, (width/2-text.get_width()/2, height/2-text.get_height()/2))
     else:
-        font=pygame.font.SysFont("comicsans", 60)
+        font=pygame.font.SysFont("comicsans", 50)
         text=font.render("Your Move", 1, (0,255,255))
         win.blit(text, (80,200))
         
@@ -75,7 +73,7 @@ def redrawWindow(win,game,p):
                 
         else:
             win.blit(text1, (100,350))
-            win.blit(text2, (100,350))
+            win.blit(text2, (400,350))
                 
         for btn in btns:
             btn.draw(win)
@@ -141,4 +139,25 @@ def main():
                                 
         redrawWindow(win, game, player)
         
-main()
+def menu_screen():
+    run=True
+    clock=pygame.time.Clock()
+    
+    while run:
+        clock.tick(60)
+        win.fill((128,128,128))
+        font=pygame.font.SysFont("comicsans",60)
+        text=font.render("Click to play!",1,(255,0,0))
+        win.blit(text, (100,200))
+        pygame.display.update()
+        
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                pygame.quit()
+                run=False
+            if event.type==pygame.MOUSEBUTTONDOWN:
+                run=False       
+    main()
+
+while True:
+    menu_screen()

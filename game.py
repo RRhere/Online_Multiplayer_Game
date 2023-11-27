@@ -30,7 +30,7 @@ class Game:
         p2=self.moves[1].upper()[0]
         
         winner=-1
-        if p2=="R" and p2=="S":
+        if p1=="R" and p2=="S":
             winner=0
         elif p1=="S" and p2=="R":
             winner=1
